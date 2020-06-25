@@ -2,3 +2,10 @@
 name = "drogue-boot"
 version = "0.1.0"
 edition = "2018"
+license = "Apache-2.0"
+authors = [ "Bob McWhirter" ]
+description = "A cortex-m bootloader toolkit"
+homepage = "https://github.com/drogue-iot"
+repository = "https://github.com/drogue-iot/drogue-boot"
+readme = "README.md"
+keywords = ["cortex-m", "embedded", "bootloader"]

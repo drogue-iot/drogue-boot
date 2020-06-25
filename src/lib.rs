@@ -3,14 +3,19 @@
 
 use core::fmt::Arguments;
 
+/// General logging SPI.
 pub trait Logger {
+
+    /// Log a formatted [core::fmt::Arguments] object.
     fn log(&self, _message: Arguments) -> () {}
 
+    /// Log a string message.
     fn log_message(&self, message: &str) -> () {
         self.log(format_args!("{}\n", message));
     }
 }
 
+/// A no-op silent logger, used by default.
 pub struct NoOpLogger {}
 
 #[allow(dead_code)]
@@ -26,6 +31,7 @@ impl Logger for NoOpLogger {
 
 static NOOP_LOGGER: NoOpLogger = NoOpLogger{};
 
+/// A bootloader controller.
 #[allow(dead_code)]
 pub struct Boot<'a> {
     boot_partition: u32,
@@ -34,6 +40,9 @@ pub struct Boot<'a> {
 
 #[allow(dead_code)]
 impl<'a> Boot<'a> {
+
+    /// Create a new bootloader controller.
+    /// * `partition` - The start address of the primary non-bootloader partition.
     pub fn new(partition: u32) -> Boot<'a> {
         Boot {
             boot_partition: partition,
@@ -41,11 +50,13 @@ impl<'a> Boot<'a> {
         }
     }
 
+    /// Configure a logger to use by the bootloader.
     pub fn with_logger(&mut self, logger: &'a dyn Logger) -> &mut Self {
         self.logger = logger;
         self
     }
 
+    /// Perform the bootloader boot sequence.
     pub fn boot(self: &Self) -> ! {
         self.logger.log_message("Drogue-IoT Bootloader");
 

@@ -11,7 +11,7 @@ passed as the boot partition.
 For instance, using RTFM/RTIC, and RTT-based logging, a simple bootloader
 application for an STM Bluepill might look like:
 
-```
+```rust
 #[entry]
 fn entry() -> ! {
     let logger = RttLogger::new();

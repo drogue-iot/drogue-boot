@@ -7,5 +7,5 @@ authors = [ "Bob McWhirter" ]
 description = "A cortex-m bootloader toolkit"
 homepage = "https://github.com/drogue-iot"
 repository = "https://github.com/drogue-iot/drogue-boot"
-readme = "README.md"
+readme = "README.adoc"
 keywords = ["cortex-m", "embedded", "bootloader"]

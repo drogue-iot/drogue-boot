@@ -1,4 +1,4 @@
-# Drogue Boot
+= Drogue Boot
 
 This library provides (at this point, a very basic) mechanism for
 a 2-stage booting of an embedded ARM Cortex-M system. 
@@ -27,15 +27,14 @@ fn entry() -> ! {
 The bootloader's own memory.x places this application at `0x08000000`,
 and boots the primary application located at `0x08008000`.
 
-## Current unsupported
+== Current unsupported
 
 Basically everything. The vector table is not yet adjusted, nor are interrupts
 correctly disabled.
 
-## Future features
+== Future features
 
 * Support for on-device upgrades of the bootable image from secondary storage
 (or elsewhere in flash)
-
 * Image verification (signed hashes, etc).
 

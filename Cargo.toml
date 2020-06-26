@@ -1,6 +1,6 @@
 [package]
 name = "drogue-boot"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2018"
 license = "Apache-2.0"
 authors = [ "Bob McWhirter" ]
@@ -9,3 +9,9 @@ homepage = "https://github.com/drogue-iot"
 repository = "https://github.com/drogue-iot/drogue-boot"
 readme = "README.md"
 keywords = ["cortex-m", "embedded", "bootloader"]
+
+[dependencies]
+rtt-target = {version = "0.2.0", features = ["cortex-m"], optional=true }
+
+[features]
+rtt = [ "rtt-target" ]

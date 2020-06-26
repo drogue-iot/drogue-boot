@@ -8,10 +8,19 @@ to be flashed at the default initial boot location, and use Drogue Boot
 to boot the primary application located (linked against) the location
 passed as the boot partition.
 
-For instance, using RTFM/RTIC, and RTT-based logging, a simple bootloader
+For instance, using `cortex-m-rt`, and RTT-based logging, a simple bootloader
 application for an STM Bluepill might look like:
 
+If the `rtt` feature is enabled on the dependency, an `RTTLogger` is available
+for use.
+
 ```rust
+use drogue_boot::{ 
+    Boot,
+    Logger, 
+    rtt_logger::RTTLogger, 
+}
+
 #[entry]
 fn entry() -> ! {
     let logger = RttLogger::new();
@@ -24,10 +33,10 @@ fn entry() -> ! {
 }
 ```
 
-The bootloader's own memory.x places this application at `0x08000000`,
+The bootloader's own `memory.x` places this application at `0x08000000`,
 and boots the primary application located at `0x08008000`.
 
-## Current unsupported
+## Currently unsupported
 
 Basically everything. The vector table is not yet adjusted, nor are interrupts
 correctly disabled.

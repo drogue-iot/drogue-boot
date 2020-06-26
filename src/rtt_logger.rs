@@ -1,3 +1,5 @@
+// Licensed under the Apache-License 2.0
+
 use crate::Logger;
 
 #[cfg(feature="rtt")]
@@ -8,6 +10,11 @@ use rtt_target::{
 
 #[cfg(feature="rtt")]
 #[allow(dead_code)]
+/// Logger which uses SEGGER RTT protocol to communicate
+/// progress back to an attached host system.
+/// 
+/// This logger may be useful when using a crate
+/// such as `cargo-embed`.
 pub struct RTTLogger {
 
 }

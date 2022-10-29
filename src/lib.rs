@@ -1,7 +1,6 @@
 // Licensed under the Apache-License 2.0
 
 #![no_std]
-#![feature(asm)]
 
 #[cfg(feature = "rtt")]
 pub mod rtt_logger;
@@ -97,7 +96,7 @@ extern "C" fn do_jump(_sp: u32, _reset: u32) -> ! {
     // r1 = reset
 
     unsafe {
-        asm! {
+        core::arch::asm! {
             // Set the stack-pointer
             "msr msp, r0",
             // Branch to the reset handler.
